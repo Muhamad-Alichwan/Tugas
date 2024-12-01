@@ -34,7 +34,7 @@ def create_rfm_df(df):
 
     return create_rfm_df
 
-all_df = pd.read_csv("./Belajar_Analisis_Dengan_Python/Tugas/day.csv")
+all_df = pd.read_csv("day.csv")
 
 datetime_columns = ["dteday"]
 all_df.sort_values(by="dteday", inplace=True)
