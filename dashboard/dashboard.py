@@ -2,7 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+import os
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(current_dir, "logo_toko.png")
+data_path = os.path.join(current_dir, "all_data.csv")
 
 def create_byseason_byworkingday(df):
     season_map = {1: "springer", 2: "summer", 3: "fall", 4: "winter"}
@@ -34,7 +38,7 @@ def create_rfm_df(df):
 
     return create_rfm_df
 
-all_df = pd.read_csv("day.csv")
+all_df = pd.read_csv(data_path)
 
 datetime_columns = ["dteday"]
 all_df.sort_values(by="dteday", inplace=True)
@@ -47,7 +51,7 @@ min_date = all_df["dteday"].min()
 max_date = all_df["dteday"].max()
 
 with st.sidebar:
-    st.image("./Belajar_Analisis_Dengan_Python/Tugas/logo_toko.png")
+    st.image(image_path)
 
     start_date, end_date = st.date_input(
         label="Rentang Waktu",
